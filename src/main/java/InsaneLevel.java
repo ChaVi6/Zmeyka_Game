@@ -322,6 +322,4 @@ public class InsaneLevel extends JPanel implements ActionListener{
             }
         }
     }
-
-
 }
