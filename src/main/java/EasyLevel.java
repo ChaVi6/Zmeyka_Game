@@ -239,6 +239,4 @@ public class EasyLevel extends JPanel implements ActionListener{
             }
         }
     }
-
-
 }
