@@ -161,7 +161,6 @@ public class InsaneLevel extends JPanel implements ActionListener{
                 g.drawImage(dot, x[i], y[i], this);
             }
 
-
         } else {
 
             JLabel str;
