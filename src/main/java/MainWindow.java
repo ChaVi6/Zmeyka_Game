@@ -1,3 +1,4 @@
+/*
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
@@ -16,4 +17,4 @@ public class MainWindow extends JFrame {
     public static void main(String[] args) {
         StarterWindow sw = new StarterWindow();
     }
-}
+}*/

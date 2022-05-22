@@ -10,7 +10,7 @@ import java.util.Random;
 public class MediumLevel extends JPanel implements ActionListener{
     public static final int SIZE = 320;
     private final int DOT_SIZE = 16;
-    private final int ALL_DOTS = 400;
+    private final int MAX_DOTS = 400;
     private Image dot;
     private Image food;
     private Image stone1;
@@ -24,8 +24,8 @@ public class MediumLevel extends JPanel implements ActionListener{
     private int stone2Y;
     private int stone3X;
     private int stone3Y;
-    private final int[] x = new int[ALL_DOTS];
-    private final int[] y = new int[ALL_DOTS];
+    private final int[] x = new int[MAX_DOTS];
+    private final int[] y = new int[MAX_DOTS];
     private int dots;
     private Timer timer;
     private boolean left = false;
@@ -108,37 +108,70 @@ public class MediumLevel extends JPanel implements ActionListener{
 
         } else {
 
-            JLabel str;
-            str = new JLabel("Game Over :(");
-            str.setSize(100,20);
-            str.setLocation(128, 100);
-            str.setForeground(Color.white);
+            if (dots == MAX_DOTS) {
+                JLabel str;
+                str = new JLabel("You Win! :)");
+                str.setSize(100, 20);
+                str.setLocation(132, 100);
+                str.setForeground(Color.white);
 
-            JButton restart = new JButton("Restart");
-            restart.setSize(100,20);
-            restart.setLocation(115, 165);
-            restart.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setVisible(false);
-                    MediumLevelWindow mlw = new MediumLevelWindow();
-                }
-            });
+                JButton restart = new JButton("Restart");
+                restart.setSize(100, 20);
+                restart.setLocation(115, 165);
+                restart.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        MediumLevelWindow mlw = new MediumLevelWindow();
+                    }
+                });
 
-            JButton menu = new JButton("Main Menu");
-            menu.setSize(100,20);
-            menu.setLocation(115, 215);
-            menu.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setVisible(false);
-                    StarterWindow sw = new StarterWindow();
-                }
-            });
-            add(restart);
-            add(menu);
-            add(str);
+                JButton menu = new JButton("Main Menu");
+                menu.setSize(100, 20);
+                menu.setLocation(115, 215);
+                menu.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        StarterWindow sw = new StarterWindow();
+                    }
+                });
+                add(restart);
+                add(menu);
+                add(str);
 
+            } else {
+                JLabel str;
+                str = new JLabel("Game Over :(");
+                str.setSize(100, 20);
+                str.setLocation(128, 100);
+                str.setForeground(Color.white);
+
+                JButton restart = new JButton("Restart");
+                restart.setSize(100, 20);
+                restart.setLocation(115, 165);
+                restart.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        MediumLevelWindow mlw = new MediumLevelWindow();
+                    }
+                });
+
+                JButton menu = new JButton("Main Menu");
+                menu.setSize(100, 20);
+                menu.setLocation(115, 215);
+                menu.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        StarterWindow sw = new StarterWindow();
+                    }
+                });
+                add(restart);
+                add(menu);
+                add(str);
+            }
         }
     }
 
@@ -167,6 +200,9 @@ public class MediumLevel extends JPanel implements ActionListener{
             dots++;
             if (dots == 8 || dots == 13 || dots == 18) {
                 timer.setDelay(timer.getDelay() - 40);
+            }
+            if (dots == MAX_DOTS) {
+                inGame = false;
             }
             createFood();
         }

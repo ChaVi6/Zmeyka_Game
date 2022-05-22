@@ -10,14 +10,12 @@ import java.util.Random;
 public class HardLevel extends JPanel implements ActionListener{
     public static final int SIZE = 320;
     private final int DOT_SIZE = 16;
-    private final int ALL_DOTS = 400;
+    private final int MAX_DOTS = 400;
     private Image dot;
     private Image food;
     private Image stone1;
     private Image stone2;
     private Image stone3;
-    private Image stone4;
-    private Image stone5;
     private Image bonus1;
     private Image bonus2;
     private int foodX;
@@ -32,8 +30,8 @@ public class HardLevel extends JPanel implements ActionListener{
     private int bonus1Y;
     private int bonus2X;
     private int bonus2Y;
-    private final int[] x = new int[ALL_DOTS];
-    private final int[] y = new int[ALL_DOTS];
+    private final int[] x = new int[MAX_DOTS];
+    private final int[] y = new int[MAX_DOTS];
     private int dots;
     private Timer timer;
     private boolean left = false;
@@ -113,10 +111,6 @@ public class HardLevel extends JPanel implements ActionListener{
         stone2 = iis2.getImage();
         ImageIcon iis3 = new ImageIcon("block.png");
         stone3 = iis3.getImage();
-        ImageIcon iis4 = new ImageIcon("block.png");
-        stone4 = iis4.getImage();
-        ImageIcon iis5 = new ImageIcon("block.png");
-        stone5 = iis5.getImage();
         ImageIcon iib1 = new ImageIcon("bonus1.png");
         bonus1 = iib1.getImage();
         ImageIcon iib2 = new ImageIcon("bonus2.png");
@@ -152,37 +146,70 @@ public class HardLevel extends JPanel implements ActionListener{
 
         } else {
 
-            JLabel str;
-            str = new JLabel("Game Over :(");
-            str.setSize(100,20);
-            str.setLocation(128, 100);
-            str.setForeground(Color.white);
+            if (dots == MAX_DOTS) {
+                JLabel str;
+                str = new JLabel("You Win! :)");
+                str.setSize(100, 20);
+                str.setLocation(132, 100);
+                str.setForeground(Color.white);
 
-            JButton restart = new JButton("Restart");
-            restart.setSize(100,20);
-            restart.setLocation(115, 165);
-            restart.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setVisible(false);
-                    HardLevelWindow ilw = new HardLevelWindow();
-                }
-            });
+                JButton restart = new JButton("Restart");
+                restart.setSize(100, 20);
+                restart.setLocation(115, 165);
+                restart.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        HardLevelWindow hlw = new HardLevelWindow();
+                    }
+                });
 
-            JButton menu = new JButton("Main Menu");
-            menu.setSize(100,20);
-            menu.setLocation(115, 215);
-            menu.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    setVisible(false);
-                    StarterWindow sw = new StarterWindow();
-                }
-            });
-            add(restart);
-            add(menu);
-            add(str);
+                JButton menu = new JButton("Main Menu");
+                menu.setSize(100, 20);
+                menu.setLocation(115, 215);
+                menu.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        StarterWindow sw = new StarterWindow();
+                    }
+                });
+                add(restart);
+                add(menu);
+                add(str);
 
+            } else {
+                JLabel str;
+                str = new JLabel("Game Over :(");
+                str.setSize(100, 20);
+                str.setLocation(128, 100);
+                str.setForeground(Color.white);
+
+                JButton restart = new JButton("Restart");
+                restart.setSize(100, 20);
+                restart.setLocation(115, 165);
+                restart.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        HardLevelWindow hlw = new HardLevelWindow();
+                    }
+                });
+
+                JButton menu = new JButton("Main Menu");
+                menu.setSize(100, 20);
+                menu.setLocation(115, 215);
+                menu.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        setVisible(false);
+                        StarterWindow sw = new StarterWindow();
+                    }
+                });
+                add(restart);
+                add(menu);
+                add(str);
+            }
         }
     }
 
@@ -211,6 +238,9 @@ public class HardLevel extends JPanel implements ActionListener{
             dots++;
             if (dots == 5 || dots == 10 || dots == 15 || dots == 20) {
                 timer.setDelay(timer.getDelay() - 35);
+            }
+            if (dots == MAX_DOTS) {
+                inGame = false;
             }
             createFood();
             createBlocks();
