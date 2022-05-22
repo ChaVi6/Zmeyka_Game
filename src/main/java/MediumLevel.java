@@ -102,6 +102,18 @@ public class MediumLevel extends JPanel implements ActionListener{
                         g.drawImage(dot, x[j], y[j], this);
                     }
                 }
+                if (y[0] < 0) {
+                    y[0] = SIZE;
+                }
+                if (y[0] > SIZE) {
+                    y[0] = 0;
+                }
+                if (x[0] < 0) {
+                    x[0] = SIZE;
+                }
+                if (x[0] > SIZE) {
+                    x[0] = 0;
+                }
                 g.drawImage(dot, x[i], y[i], this);
             }
 

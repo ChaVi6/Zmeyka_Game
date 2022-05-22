@@ -8,7 +8,7 @@ public class EasyLevelWindow extends JFrame {
         setSize(EasyLevel.SIZE + 30,EasyLevel.SIZE + 60);
         setLocation(500, 150);
         add(new EasyLevel());
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
     }
 

@@ -65,16 +65,26 @@ public class EasyLevel extends JPanel implements ActionListener{
         if(inGame) {
             g.drawImage(food, foodX, foodY, this);
 
-
             for (int i = 0; i < dots; i++) {
                 if (x[0] == foodX && y[0] == foodY) {
                     for (int j = 0; j < dots; j++) {
                         g.drawImage(dot, x[j], y[j], this);
                     }
                 }
+                if (y[0] < 0) {
+                    y[0] = SIZE;
+                }
+                if (y[0] > SIZE) {
+                    y[0] = 0;
+                }
+                if (x[0] < 0) {
+                    x[0] = SIZE;
+                }
+                if (x[0] > SIZE) {
+                    x[0] = 0;
+                }
                 g.drawImage(dot, x[i], y[i], this);
             }
-
 
         } else {
 
@@ -151,12 +161,11 @@ public class EasyLevel extends JPanel implements ActionListener{
             y[i] = y[i-1];
         }
 
-        //x[0] - голова
+        //x[0], y[0] - голова
 
         if(left){
             x[0] -= DOT_SIZE;
-        }
-        if(right){
+        } if(right){
             x[0] += DOT_SIZE;
         } if(up){
             y[0] -= DOT_SIZE;
@@ -179,25 +188,10 @@ public class EasyLevel extends JPanel implements ActionListener{
     }
 
     public void checkBorders(){
-
-
-        for (int i = dots; i >0 ; i--) {
+        for (int i = dots; i > 0 ; i--) {
             if (i > 4 && x[0] == x[i] && y[0] == y[i]) {
                 inGame = false;
             }
-        }
-
-        if(x[0]>SIZE){
-            inGame = false;
-        }
-        if(x[0]<0){
-            inGame = false;
-        }
-        if(y[0]>SIZE){
-            inGame = false;
-        }
-        if(y[0]<0){
-            inGame = false;
         }
     }
 
