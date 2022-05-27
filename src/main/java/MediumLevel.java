@@ -120,7 +120,7 @@ public class MediumLevel extends JPanel implements ActionListener{
 
         } else {
 
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 3) {
                 JLabel str;
                 str = new JLabel("You Win! :)");
                 str.setSize(100, 20);
@@ -213,7 +213,7 @@ public class MediumLevel extends JPanel implements ActionListener{
             if (dots == 8 || dots == 13 || dots == 18) {
                 timer.setDelay(timer.getDelay() - 40);
             }
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 3) {
                 inGame = false;
             }
             createFood();

@@ -163,7 +163,7 @@ public class InsaneLevel extends JPanel implements ActionListener{
 
         } else {
 
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 5) {
                 JLabel str;
                 str = new JLabel("You Win! :)");
                 str.setSize(100, 20);
@@ -254,7 +254,7 @@ public class InsaneLevel extends JPanel implements ActionListener{
         if (x[0] == foodX && y[0] == foodY){
             dots++;
             timer.setDelay(timer.getDelay() - 10);
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 5) {
                 inGame = false;
             }
             createFood();

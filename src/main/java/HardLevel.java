@@ -146,7 +146,7 @@ public class HardLevel extends JPanel implements ActionListener{
 
         } else {
 
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 3) {
                 JLabel str;
                 str = new JLabel("You Win! :)");
                 str.setSize(100, 20);
@@ -239,7 +239,7 @@ public class HardLevel extends JPanel implements ActionListener{
             if (dots == 5 || dots == 10 || dots == 15 || dots == 20) {
                 timer.setDelay(timer.getDelay() - 35);
             }
-            if (dots == MAX_DOTS) {
+            if (dots == MAX_DOTS - 3) {
                 inGame = false;
             }
             createFood();

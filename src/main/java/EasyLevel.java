@@ -25,7 +25,7 @@ public class EasyLevel extends JPanel implements ActionListener{
     private boolean down = false;
     private boolean inGame = true;
 
-    public EasyLevel(){
+    public EasyLevel() {
         setBackground(Color.black);
         loadImages();
         initGame();
@@ -34,7 +34,7 @@ public class EasyLevel extends JPanel implements ActionListener{
         setVisible(true);
     }
 
-    public void initGame(){
+    public void initGame() {
         dots = 3;
         for (int i = 0; i < dots; i++) {
             x[i] = 48 - i*DOT_SIZE;
@@ -49,10 +49,11 @@ public class EasyLevel extends JPanel implements ActionListener{
     public void createFood() {
         foodX = new Random().nextInt(21) * DOT_SIZE;
         foodY = new Random().nextInt(21) * DOT_SIZE;
+
     }
 
 
-    public void loadImages(){
+    public void loadImages() {
         ImageIcon iif = new ImageIcon("food.png");
         food = iif.getImage();
         ImageIcon iid = new ImageIcon("dot.png");
@@ -155,7 +156,7 @@ public class EasyLevel extends JPanel implements ActionListener{
         }
     }
 
-    public void move(){
+    public void move() {
         for (int i = dots - 1; i > 0; i--) {
             x[i] = x[i-1];
             y[i] = y[i-1];
@@ -187,10 +188,11 @@ public class EasyLevel extends JPanel implements ActionListener{
         }
     }
 
-    public void checkBorders(){
+    public void checkBorders() {
         for (int i = dots; i > 0 ; i--) {
             if (i > 4 && x[0] == x[i] && y[0] == y[i]) {
                 inGame = false;
+                break;
             }
         }
     }
@@ -205,7 +207,7 @@ public class EasyLevel extends JPanel implements ActionListener{
         repaint();
     }
 
-    class FieldKeyListener extends KeyAdapter{
+    class FieldKeyListener extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
             super.keyPressed(e);
