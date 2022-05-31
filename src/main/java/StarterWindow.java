@@ -39,6 +39,8 @@ public class StarterWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 start.setVisible(false);
                 info.setVisible(false);
+                repaint();
+
                 JButton easy = new JButton("Easy");
                 easy.setSize(300, 50);
                 easy.setLocation(60, 280);
