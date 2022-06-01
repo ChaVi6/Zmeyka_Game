@@ -49,7 +49,6 @@ public class EasyLevel extends JPanel implements ActionListener{
     public void createFood() {
         foodX = new Random().nextInt(21) * DOT_SIZE;
         foodY = new Random().nextInt(21) * DOT_SIZE;
-
     }
 
 
@@ -190,7 +189,7 @@ public class EasyLevel extends JPanel implements ActionListener{
 
     public void checkBorders() {
         for (int i = dots; i > 0 ; i--) {
-            if (i > 4 && x[0] == x[i] && y[0] == y[i]) {
+            if (dots > 4 && x[0] == x[i] && y[0] == y[i]) {
                 inGame = false;
                 break;
             }

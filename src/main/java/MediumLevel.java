@@ -193,7 +193,7 @@ public class MediumLevel extends JPanel implements ActionListener{
             y[i] = y[i-1];
         }
 
-        //x[0] - голова
+        //x[0], y[0] - голова
 
         if(left){
             x[0] -= DOT_SIZE;
@@ -233,8 +233,9 @@ public class MediumLevel extends JPanel implements ActionListener{
             inGame = false;
         }
         for (int i = dots; i >0 ; i--) {
-            if (i > 4 && x[0] == x[i] && y[0] == y[i]) {
+            if (dots > 4 && x[0] == x[i] && y[0] == y[i]) {
                 inGame = false;
+                break;
             }
         }
 
